@@ -22,7 +22,7 @@ if(typeof Object.create !== 'function') {
 
         show: function() {
             var self = this;
-            
+
             if(self.elems.length > 0) {
                 var i = 0;
                 self.elems.append('<div class="flash"></div>');
@@ -51,10 +51,16 @@ if(typeof Object.create !== 'function') {
                     timeout = setTimeout(process, self.options.interval);
                 }
                 else if($.isFunction(self.callback)) {
-                    self.callback.call(objects);
+                    var callbackInterval = self.options.fadeSpeed - self.options.interval > 0
+                                            ?self.options.fadeSpeed
+                                            : self.options.interval;
+                    timeout = setTimeout(function() { 
+                        return self.callback.call(self.elems);
+                    }, callbackInterval);
                 }
                 i++;
             }
+
             return self.elems;
         }, // end of show
 
@@ -91,8 +97,16 @@ if(typeof Object.create !== 'function') {
                         });
                     });
                     timeout = setTimeout(process, self.options.interval);
+                } else if ($.isFunction(self.callback)) {
+                    var callbackInterval = self.options.fadeSpeed - self.options.interval > 0
+                                            ?self.options.fadeSpeed
+                                            : self.options.interval;
+                    timeout = setTimeout(function() { 
+                        return self.callback.call(self.elems);
+                    }, callbackInterval);
                 }
             }
+
             return self.elems;
         } // end of hide
     };
