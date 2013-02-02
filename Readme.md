@@ -5,6 +5,12 @@
 
     $('.flash').flashBulb('hide'); // will remove each element one at a time starting with the last element selected.
 
+    $('.flash').flashBulb({method: 'show', initialFlash: 40, interval: 400}); // and options object can be passed in place of a single argument.
+
+    $('.flash').flashBulb('show', function() {
+        // do something cool here
+    });
+
 
 Available options:
 
