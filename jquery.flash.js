@@ -113,7 +113,7 @@ if(typeof Object.create !== 'function') {
 
     $.fn.flashBulb = function(typeOrOptions, callback) {
         var flashBulb = Object.create(FlashBulb);
-        var method = typeof(typeOrOptions) == String ? typeOrOptions : typeOrOptions.method || $.fn.flashBulb.options.method;
+        var method = (typeof typeOrOptions == 'string') ? typeOrOptions : typeOrOptions.method || $.fn.flashBulb.options.method;
         flashBulb.init(this, typeOrOptions, callback);
 
 
