@@ -11,13 +11,13 @@ if(typeof Object.create !== 'function') {
 
     var version = '0.1';
 
-    var Flash = {
+    var FlashBulb = {
         init: function(elements, options, callback) {
             var self = this;
             self.elems = elements;
             self.callback = callback;
             self.timeout = null;
-            self.options = $.extend({}, $.fn.flash.options, options);
+            self.options = $.extend({}, $.fn.flashBulb.options, options);
         }, // end of init
 
         show: function() {
@@ -111,22 +111,22 @@ if(typeof Object.create !== 'function') {
         } // end of hide
     };
 
-    $.fn.flash = function(typeOrOptions, callback) {
-        var flash = Object.create(Flash);
-        var method = typeof(typeOrOptions) == String ? typeOrOptions : typeOrOptions.method || $.fn.flash.options.method;
-        flash.init(this, typeOrOptions, callback);
+    $.fn.flashBulb = function(typeOrOptions, callback) {
+        var flashBulb = Object.create(FlashBulb);
+        var method = typeof(typeOrOptions) == String ? typeOrOptions : typeOrOptions.method || $.fn.flashBulb.options.method;
+        flashBulb.init(this, typeOrOptions, callback);
 
 
         if(method == 'show') {
-            return flash.show();
+            return flashBulb.show();
         } else if(method == 'hide') {
-            return flash.hide();
+            return flashBulb.hide();
         } else {
             $.error('Method '+method+' does not exists on jQuery.flash');
         }
     }
 
-    $.fn.flash.options = {
+    $.fn.flashBulb.options = {
         method: 'show',
         initialFlash: 30,
         fadeSpeed: 600,
