@@ -93,7 +93,7 @@ if(typeof Object.create !== 'function') {
                         $element.animate({
                             'opacity': 0
                         }, self.options.fadeSpeed, function() {
-                            $element.hide();
+                            $element.hide().css('opacity', 100);
                         });
                     });
                     timeout = setTimeout(process, self.options.interval);
