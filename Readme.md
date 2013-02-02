@@ -1,6 +1,5 @@
 #jQuery FlashBulb
 
-    ```javascript
     $('.flash').flashBulb(); // will flash each element into view one at a time
     $('.flash').flashBulb('show'); // same as above
 
@@ -11,7 +10,6 @@
     $('.flash').flashBulb('show', function() {
         // do something cool here
     });
-    ```
 
 
 Available options:
