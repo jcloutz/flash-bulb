@@ -22,10 +22,10 @@ if(typeof Object.create !== 'function') {
 
         show: function() {
             var self = this;
-
+            var $elements = self.elems.siblings(':hidden');
             if(self.elems.length > 0) {
                 var i = 0;
-                self.elems.append('<div class="flash"></div>');
+                $elements.append('<div class="flash"></div>');
                 $('.flash').css({
                     'background-color': self.options.background,
                     'position': 'absolute',
@@ -38,17 +38,19 @@ if(typeof Object.create !== 'function') {
             }
 
             function process() {
-                if(i < self.elems.length) {
-                    var $element = $(self.elems[i]);
-                    var flashBulb = $element.children('.flash');
-                    $element.show(1, function() {
-                        flashBulb.animate({
-                            opacity: 0
-                        }, self.options.fadeSpeed, function() {
-                            flashBulb.remove();
-                        });
-                    }); // end show
-                    timeout = setTimeout(process, self.options.interval);
+                if(i < $elements.length) {
+                    var $element = $($elements[i]);
+                    if($element.is(':hidden')) {
+                        var flashBulb = $element.children('.flash');
+                        $element.show(1, function() {
+                            flashBulb.animate({
+                                opacity: 0
+                            }, self.options.fadeSpeed, function() {
+                                flashBulb.remove();
+                            });
+                        }); // end show
+                        timeout = setTimeout(process, self.options.interval);
+                    }
                 }
                 else if($.isFunction(self.callback)) {
                     var callbackInterval = self.options.fadeSpeed - self.options.interval > 0
@@ -66,10 +68,10 @@ if(typeof Object.create !== 'function') {
 
         hide: function() {
             var self = this;
-
-            if(self.elems.length > 0) {
-                var i = self.elems.length;
-                self.elems.append('<div class="flash"></div>');
+            var $elements = self.elems.siblings(':visible');
+            if($elements.length > 0) {
+                var i = $elements.length;
+                $elements.append('<div class="flash"></div>');
                 $('.flash').css({
                     'background-color': self.options.background,
                     'position': 'absolute',
@@ -85,7 +87,7 @@ if(typeof Object.create !== 'function') {
             function process() {
                 i--;
                 if(i >= 0) {
-                    var $element = $(self.elems[i]);
+                    var $element = $($elements[i]);
                     var $flash = $element.children('.flash');
                     $flash.animate({
                         'opacity': 100
