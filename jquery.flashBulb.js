@@ -9,7 +9,7 @@ if(typeof Object.create !== 'function') {
 
 (function($, window, document, undefined){
 
-    var version = '0.1';
+    var timeout;
 
     var FlashBulb = {
         init: function(elements, options, callback) {
@@ -112,9 +112,17 @@ if(typeof Object.create !== 'function') {
     };
 
     $.fn.flashBulb = function(typeOrOptions, callback) {
-        var flashBulb = Object.create(FlashBulb);
         var method = (typeof typeOrOptions == 'string') ? typeOrOptions : typeOrOptions.method || $.fn.flashBulb.options.method;
-        flashBulb.init(this, typeOrOptions, callback);
+        if(method == 'kill') {
+            clearTimeout(timeout);
+            return this;
+        }
+
+        if(method !== 'kill'|| flashBulb == undefined) {
+            var flashBulb = Object.create(FlashBulb);
+            flashBulb.init(this, typeOrOptions, callback);
+        }
+
 
 
         if(method == 'show') {
