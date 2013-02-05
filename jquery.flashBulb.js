@@ -1,3 +1,15 @@
+/**
+ * FlashBulb
+ * http://elemental-shift.github.com/flash-bulb
+ *
+ * Animates elements into and out of view in a sequece of 'camera flashes'
+ *
+ * @requires jQuery
+ * @author Jeremy Cloutier
+ * @copyright 2012 Jeremy Cloutier (github.com/elemental-shift)
+ * @license MIT
+ */
+
 //Utility
 if(typeof Object.create !== 'function') {
     Object.create = function( obj ) {
@@ -139,8 +151,8 @@ if(typeof Object.create !== 'function') {
     $.fn.flashBulb.options = {
         method: 'show',
         initialFlash: 30,
-        fadeSpeed: 600,
-        interval: 200,
+        fadeSpeed: 300,
+        interval: 40,
         background: 'white',
     }
 })(jQuery, window, document);

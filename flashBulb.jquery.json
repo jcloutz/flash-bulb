@@ -1,0 +1,33 @@
+{
+    "name": "flashBulb",
+    "title": "Flash Bulb",
+    "description": "jQuery plugin for animating elements into and out of view in a series of 'camera flashes'",
+    "keywords": [
+        "animation",
+        "flash"
+    ],
+    "version": "1.0.0",
+    "author": {
+        "name": "Jeremy Cloutier",
+        "url": "https://github.com/elemental-shift/flash-bulb"
+    },
+    "maintainers": [
+        {
+            "name": "Jeremy Cloutier",
+            "url": "https://github.com/elemental-shift"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/elemental-shift/flash-bulb/master/license.md"
+        }
+    ],
+    "bugs": "https://github.com/elemental-shift/flash-bulb/issues",
+    "homepage": "https://elemental-shift.github.com//flash-bulb",
+    "docs": "https://github.com/elemental-shift/flash-bulb",
+    "download": "https://github.com/elemental-shift/flash-bulb",
+    "dependencies": {
+        "jquery": ">=1.7"
+    }
+}
