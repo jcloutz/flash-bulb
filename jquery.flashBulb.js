@@ -59,16 +59,19 @@ if(typeof Object.create !== 'function') {
                         var $flash = $element.children('.flashBulb-overlay');
                         $element.css({
                             'opacity': 0,
-                            'display': 'block',
-                        }).animate({
-                            'opacity': 1,
-                        }, self.options.initialFlash, function() {
-                            $flash.animate({
-                                'opacity': 0
-                            }, self.options.fadeSpeed, function() {
-                                $flash.remove();
+                        }).slideDown('slow', function() {
+                            $element.animate({
+                                'opacity': 1,
+                            }, self.options.initialFlash, function() {
+                                $flash.animate({
+                                    'opacity': 0
+                                }, self.options.fadeSpeed, function() {
+                                    $flash.remove();
+                                });
                             });
                         });
+
+
                         
                         timeout = setTimeout(process, self.options.interval);
                     }
@@ -116,7 +119,9 @@ if(typeof Object.create !== 'function') {
                         $element.animate({
                             'opacity': 0
                         }, self.options.fadeSpeed, function() {
-                            $element.hide().css('opacity', 100);
+                            $element.slideUp('slow', function() {
+                                $element.css('opacity', 100);
+                            });
                             $flash.remove();
                         });
                     });
