@@ -59,7 +59,7 @@ if(typeof Object.create !== 'function') {
                         var $flash = $element.children('.flashBulb-overlay');
                         $element.css({
                             'opacity': 0,
-                        }).slideDown('slow', function() {
+                        }).slideDown(self.options.slideSpeed, function() {
                             $element.animate({
                                 'opacity': 1,
                             }, self.options.initialFlash, function() {
@@ -119,7 +119,7 @@ if(typeof Object.create !== 'function') {
                         $element.animate({
                             'opacity': 0
                         }, self.options.fadeSpeed, function() {
-                            $element.slideUp('slow', function() {
+                            $element.slideUp(self.options.slideSpeed, function() {
                                 $element.css('opacity', 100);
                             });
                             $flash.remove();
@@ -168,6 +168,7 @@ if(typeof Object.create !== 'function') {
         initialFlash: 30,
         fadeSpeed: 300,
         interval: 40,
+        slideSpeed: 'slow',
         background: 'white',
     }
 })(jQuery, window, document);
