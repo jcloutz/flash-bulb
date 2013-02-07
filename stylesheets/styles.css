@@ -549,8 +549,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 10px;
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
+  clear: both;
 }
-
 p, ul, ol, table, pre, dl {
   margin: 0 0 20px;
 }
@@ -823,8 +823,9 @@ section #title .credits.right {
 }
 .demo-container {
   position: relative;
+  margin-bottom: 20px;
 }
-.flash-demo {
+.demo-container > div {
   float: left;
   width: 30%;
   margin: 10px 1.6%;
@@ -859,7 +860,7 @@ section #title .credits.right {
   nav {
     display: none;
   }
-  .flash-demo {
+  .demo-container > div {
     width: 47%;
     margin: 10px 1.49%;
   }

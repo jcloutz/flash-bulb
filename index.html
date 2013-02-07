@@ -7,27 +7,9 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/jquery.flashBulb.min.js"></script>
-    <script>
-      $(document).ready(function() {
-          $elements = $('.flash-demo');
-          $elements.hide();
-          $('#showHide').click(function() {
-              if($elements.is(':hidden')) {
-                  $elements.flashBulb('show', function() {
-                    $('#showHide').html('Hide');
-                  });
-              }
-              else {
-                  $elements.flashBulb('hide', function() {
-                    $('#showHide').html('Show');
-                  });
-
-              }
-          })
-      });
-    </script>
+    <script type='text/javascript' src="https://raw.github.com/elemental-shift/flash-bulb/master/jquery.flashBulb.js"></script>
     <script src="javascripts/respond.js"></script>
+    <script src="javascripts/main.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -40,9 +22,9 @@
   <body>
       <div id="header">
         <nav>
-          <li class="fork"><a href="https://github.com/elemental-shift/jQuery-Flash-Bulb">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/elemental-shift/jQuery-Flash-Bulb/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/elemental-shift/jQuery-Flash-Bulb/tarball/master">TAR</a></li>
+          <li class="fork"><a href="https://github.com/elemental-shift/flash-bulb">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/elemental-shift/flash-bulb/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/elemental-shift/flash-bulb/tarball/master">TAR</a></li>
           <li class="title">DOWNLOADS</li>
         </nav>
       </div><!-- end header -->
@@ -58,29 +40,85 @@
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
         </div>
 
-        <h3>jQuery flashBulb</h3>
+        <h3>Flash Bulb for jQuery</h3>
+        Flash Bulb will animate a set of elements onto of off of the page in a sequential order.
 
-<pre><code>$('.flash').flashBulb(); // will flash each element into view one at a time
-$('.flash').flashBulb('show'); // same as above
+        <h3>Basic Implementation</h4>
+        Basic structure of elements.
+<pre><code>&lt;div class=&quot;flashBulb&quot;&gt;
+  &lt;div&gt;subelement&lt;/div&gt;
+  &lt;div&gt;subelement&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 
-$('.flash').flashBulb('hide'); // will remove each element one at a time starting with the last element selected.
-
-$('.flash').flashBulb({method: 'show', initialFlash: 40, interval: 400}); // and options object can be passed in place of a single argument.
-
-$('.flash').flashBulb('show', function() {
-    // do something cool here
+This will animate the elements onto the page when the page loads.
+<pre><code>$(document).ready(function() {
+  $('.flashBulb div').flashBulb();
 });
 </code></pre>
-        <button id="showHide" class="button">Show</button>
+
+
+
+<h3>Working Example</h3>
+<pre><code>&lt;button id=&quot;show&quot; class=&quot;button&quot;&gt;Show&lt;/button&gt;
+&lt;button id=&quot;kill&quot; class=&quot;button&quot;&gt;Interrupt&lt;/button&gt;
+&lt;button id=&quot;hide&quot; class=&quot;button&quot;&gt;Hide&lt;/button&gt;
+&lt;div class=&quot;demo-container&quot;&gt;
+  &lt;div&gt;&lt;img src=&quot;http://placehold.it/200x150&quot; /&gt;&lt;p&gt;Item description&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;img src=&quot;http://placehold.it/200x150&quot; /&gt;&lt;p&gt;Item description&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;img src=&quot;http://placehold.it/200x150&quot; /&gt;&lt;p&gt;Item description&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;img src=&quot;http://placehold.it/200x150&quot; /&gt;&lt;p&gt;Item description&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;img src=&quot;http://placehold.it/200x150&quot; /&gt;&lt;p&gt;Item description&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;img src=&quot;http://placehold.it/200x150&quot; /&gt;&lt;p&gt;Item description&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code>// sample code for example below.
+$(document).ready(function() {
+    $elements = $('.demo-container div');
+    $elements.hide();
+    $('#show').click(function() {
+        $elements.flashBulb({
+            method: 'show',
+            fadeSpeed: 600,
+            interval: 200
+        });
+    });
+    $('#kill').click(function() {
+        $elements.flashBulb('kill');
+    });
+    $('#hide').click(function() {
+        $elements.flashBulb({
+            method: 'hide',
+            fadeSpeed: 600,
+            interval: 200
+        });
+    });
+});
+</code></pre>
+        <button id="show" class="button">Show</button>
+        <button id="kill" class="button">Interrupt</button>
+        <button id="hide" class="button">Hide</button>
         <div class="demo-container">
-          <div class="flash-demo"><img src="http://placehold.it/200x150" /><p>Item description</p></div>
-          <div class="flash-demo"><img src="http://placehold.it/200x150" /><p>Item description</p></div>
-          <div class="flash-demo"><img src="http://placehold.it/200x150" /><p>Item description</p></div>
-          <div class="flash-demo"><img src="http://placehold.it/200x150" /><p>Item description</p></div>
-          <div class="flash-demo"><img src="http://placehold.it/200x150" /><p>Item description</p></div>
-          <div class="flash-demo"><img src="http://placehold.it/200x150" /><p>Item description</p></div>
+          <div><img src="http://placehold.it/200x150" /><p>Item description</p></div>
+          <div><img src="http://placehold.it/200x150" /><p>Item description</p></div>
+          <div><img src="http://placehold.it/200x150" /><p>Item description</p></div>
+          <div><img src="http://placehold.it/200x150" /><p>Item description</p></div>
+          <div><img src="http://placehold.it/200x150" /><p>Item description</p></div>
+          <div><img src="http://placehold.it/200x150" /><p>Item description</p></div>
         </div>
 
+<h3>Options</h3>
+Flash Bulb accepts single string arguments of 'show', 'hide', or 'kill'. It also accepts options passed in within an object, as well as a callback function which will be called as soon as the elements are completely finished animating.
+<pre><code>
+method: 'show', // 'show', 'hide', 'kill'
+initialFlash: 1000, // speed of the inital fade animation
+fadeSpeed: 1000, // speed that the flash fades out
+interval: 400 // time between element animations
+</code></pre>
+
+<h3>Interrupting the current animation</h3>
+<pre><code>$('.flash').flashBulb('kill'); // will interrupt the animation sequence</code></pre>
 
       </section>
 
