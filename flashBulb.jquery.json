@@ -24,8 +24,8 @@
         }
     ],
     "bugs": "https://github.com/elemental-shift/flash-bulb/issues",
-    "homepage": "https://elemental-shift.github.com//flash-bulb",
-    "docs": "https://github.com/elemental-shift/flash-bulb",
+    "homepage": "https://elemental-shift.github.com/flash-bulb",
+    "docs": "https://elemental-shift.github.com/flash-bulb",
     "download": "https://github.com/elemental-shift/flash-bulb",
     "dependencies": {
         "jquery": ">=1.7"
