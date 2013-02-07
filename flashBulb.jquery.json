@@ -4,7 +4,9 @@
     "description": "jQuery plugin for animating elements into and out of view in a series of 'camera flashes'",
     "keywords": [
         "animation",
-        "flash"
+        "flash",
+        "fade",
+        "effect"
     ],
     "version": "1.0.0",
     "author": {
