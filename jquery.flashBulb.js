@@ -35,16 +35,19 @@ if(typeof Object.create !== 'function') {
         show: function() {
             var self = this;
             var $elements = self.elems.siblings(':hidden');
+            // if any overlays remain from 'kill' remove them.
+            $('.flashBulb-overlay').remove();
             if(self.elems.length > 0) {
                 var i = 0;
-                $elements.append('<div class="flash"></div>');
-                $('.flash').css({
+                $elements.append('<div class="flashBulb-overlay"></div>');
+                $('.flashBulb-overlay').css({
                     'background-color': self.options.background,
                     'position': 'absolute',
                     'top': '0px',
                     'left': '0px',
                     'width': '100%',
-                    'height': '100%'
+                    'height': '100%',
+                    'opacity': 100,
                 }); // end flash.css;
                 process();
             }
@@ -53,14 +56,20 @@ if(typeof Object.create !== 'function') {
                 if(i < $elements.length) {
                     var $element = $($elements[i]);
                     if($element.is(':hidden')) {
-                        var flashBulb = $element.children('.flash');
-                        $element.show(1, function() {
-                            flashBulb.animate({
-                                opacity: 0
+                        var $flash = $element.children('.flashBulb-overlay');
+                        $element.css({
+                            'opacity': 0,
+                            'display': 'block',
+                        }).animate({
+                            'opacity': 1,
+                        }, self.options.initialFlash, function() {
+                            $flash.animate({
+                                'opacity': 0
                             }, self.options.fadeSpeed, function() {
-                                flashBulb.remove();
+                                $flash.remove();
                             });
-                        }); // end show
+                        });
+                        
                         timeout = setTimeout(process, self.options.interval);
                     }
                 }
@@ -83,8 +92,8 @@ if(typeof Object.create !== 'function') {
             var $elements = self.elems.siblings(':visible');
             if($elements.length > 0) {
                 var i = $elements.length;
-                $elements.append('<div class="flash"></div>');
-                $('.flash').css({
+                $elements.append('<div class="flashBulb-overlay"></div>');
+                $('.flashBulb-overlay').css({
                     'background-color': self.options.background,
                     'position': 'absolute',
                     'top': '0px',
@@ -100,14 +109,15 @@ if(typeof Object.create !== 'function') {
                 i--;
                 if(i >= 0) {
                     var $element = $($elements[i]);
-                    var $flash = $element.children('.flash');
+                    var $flash = $element.children('.flashBulb-overlay');
                     $flash.animate({
-                        'opacity': 100
+                        'opacity': 1
                     }, self.options.initialFlash, function() {
                         $element.animate({
                             'opacity': 0
                         }, self.options.fadeSpeed, function() {
                             $element.hide().css('opacity', 100);
+                            $flash.remove();
                         });
                     });
                     timeout = setTimeout(process, self.options.interval);
