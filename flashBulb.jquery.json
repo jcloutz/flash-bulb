@@ -11,24 +11,24 @@
     "version": "1.0.4",
     "author": {
         "name": "Jeremy Cloutier",
-        "url": "http://github.com/elemental-shift/flash-bulb"
+        "url": "http://github.com/jcloutz/flash-bulb"
     },
     "maintainers": [
         {
             "name": "Jeremy Cloutier",
-            "url": "http://github.com/elemental-shift"
+            "url": "http://github.com/jcloutz"
         }
     ],
     "licenses": [
         {
             "type": "MIT",
-            "url": "http://github.com/elemental-shift/flash-bulb/blob/master/license.md"
+            "url": "http://github.com/jcloutz/flash-bulb/blob/master/license.md"
         }
     ],
-    "bugs": "http://github.com/elemental-shift/flash-bulb/issues",
-    "homepage": "http://elemental-shift.github.com/flash-bulb",
-    "docs": "http://elemental-shift.github.com/flash-bulb",
-    "download": "http://github.com/elemental-shift/flash-bulb",
+    "bugs": "http://github.com/jcloutz/flash-bulb/issues",
+    "homepage": "http://jcloutz.github.com/flash-bulb",
+    "docs": "http://jcloutz.github.com/flash-bulb",
+    "download": "http://github.com/jcloutz/flash-bulb",
     "dependencies": {
         "jquery": ">=1.7"
     }
