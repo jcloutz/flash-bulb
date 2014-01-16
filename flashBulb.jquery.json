@@ -8,7 +8,7 @@
         "fade",
         "effect"
     ],
-    "version": "1.0.4",
+    "version": "1.0.5",
     "author": {
         "name": "Jeremy Cloutier",
         "url": "http://github.com/jcloutz/flash-bulb"
@@ -26,8 +26,8 @@
         }
     ],
     "bugs": "http://github.com/jcloutz/flash-bulb/issues",
-    "homepage": "http://jcloutz.github.com/flash-bulb",
-    "docs": "http://jcloutz.github.com/flash-bulb",
+    "homepage": "http://jcloutz.github.io/flash-bulb",
+    "docs": "http://jcloutz.github.io/flash-bulb",
     "download": "http://github.com/jcloutz/flash-bulb",
     "dependencies": {
         "jquery": ">=1.7"
